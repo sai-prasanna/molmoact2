@@ -259,7 +259,12 @@ class BimanualPickPlaceEnv(BaseEnv):
         return cx, cy, hx, hy, z_lo, z_hi
 
     def success_fn(self) -> torch.Tensor:
-        """Default: every object's center inside the container footprint + z band."""
+        """Per-object success mask, shape (N, b): N = len(self.objects), b = batch.
+
+        Default: every object's center inside the container footprint + z band.
+        evaluate() reduces this over dim 0 (the object axis), so overrides MUST
+        also return shape (N, b) — e.g. broadcast a (b,) predicate with
+        `pred.unsqueeze(0).expand(len(self.objects), -1)`."""
         cx, cy, hx, hy, z_lo, z_hi = self._container_bounds()
         per_obj = [object_in_footprint(o.pose.p, cx, cy, hx, hy, z_lo, z_hi)
                    for o in self.objects]
