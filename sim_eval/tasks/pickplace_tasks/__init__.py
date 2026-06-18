@@ -8,6 +8,7 @@ from .container_tasks import (
     BimanualToolEnv,
     BimanualGroceryEnv,
 )
+from .block_stack import BimanualBlockStackEnv
 
 __all__ = [
     "BimanualBoxEnv",
@@ -16,4 +17,5 @@ __all__ = [
     "BimanualMedEnv",
     "BimanualToolEnv",
     "BimanualGroceryEnv",
+    "BimanualBlockStackEnv",
 ]
