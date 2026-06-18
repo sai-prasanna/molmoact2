@@ -28,7 +28,7 @@ from tqdm import tqdm
 
 import mani_skill.envs  # noqa: F401
 from .tasks import *  # noqa: F401, F403
-from .inference.client import DroidClient, YAMClient, MolmoActClientBase
+from .inference.client import DroidClient, YAMClient, DK1Client, MolmoActClientBase
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -39,10 +39,17 @@ DEFAULT_OUTPUT_DIR = str(EVAL_DIR / "outputs")
 DEFAULT_LANGUAGE_INSTRUCTIONS: dict[str, str] = {
     "DroidPutEverythingInBox-v1":       "put everything into the box",
     "BimanualYAMPutEverythingInBox-v1": "put everything into the box",
+    "DK1PutEverythingInBox-v1":         "put everything into the box",
 }
 
 
-PolicyType = Literal["remote-droid", "remote-yam"]
+PolicyType = Literal["remote-droid", "remote-yam", "remote-dk1"]
+
+POLICY_ROBOT: dict[str, str] = {
+    "remote-yam": "bimanual_yam",
+    "remote-dk1": "bimanual_dk1",
+    # remote-droid intentionally absent: DROID tasks are single-robot, use env default
+}
 
 
 @dataclass
@@ -51,6 +58,9 @@ class EvalConfig:
 
     policy_type: Annotated[PolicyType, tyro.conf.arg(aliases=["-p"])] = "remote-yam"
     """'remote-droid' or 'remote-yam'."""
+
+    robot_uids: Optional[str] = None
+    """Override the robot. Default: derived from --policy-type (yam/dk1)."""
 
     remote_url: Optional[str] = None
     """Full /act endpoint URL, e.g. http://<host>:8202/act."""
@@ -149,6 +159,7 @@ def _run_episode(
 ) -> dict:
     total_reward = 0.0
     success = False
+    max_in_box = 0  # best (highest) n_in_box seen during the episode (partial credit)
     frames: list[np.ndarray] = []
     input_frames = _extract_input_frames(obs)
 
@@ -171,6 +182,12 @@ def _run_episode(
         if sv:
             success = True
 
+        nib = info.get("n_in_box")
+        if nib is not None:
+            if isinstance(nib, torch.Tensor):
+                nib = int(nib.max().item()) if nib.numel() else 0
+            max_in_box = max(max_in_box, int(nib))
+
         terminated = bool(terminated.any()) if isinstance(terminated, torch.Tensor) else bool(terminated)
         truncated  = bool(truncated.any())  if isinstance(truncated,  torch.Tensor) else bool(truncated)
 
@@ -184,6 +201,7 @@ def _run_episode(
     return {
         "total_reward": total_reward,
         "success": success,
+        "n_in_box": max_in_box,
         "steps": step + 1,
         "frames": frames,
         "input_frames": input_frames,
@@ -191,12 +209,8 @@ def _run_episode(
 
 
 def _evaluate_task(env_id: str, client: MolmoActClientBase, config: EvalConfig) -> dict:
-    instruction = config.language_instruction or DEFAULT_LANGUAGE_INSTRUCTIONS.get(env_id, env_id)
-    logger.info("─" * 50)
-    logger.info("Task: %s  |  instruction: %s", env_id, instruction)
-
-    env = gym.make(
-        env_id,
+    robot_uids = config.robot_uids or POLICY_ROBOT.get(config.policy_type)
+    make_kwargs = dict(
         obs_mode="rgb",
         control_mode="pd_joint_pos",
         render_mode="rgb_array",
@@ -205,9 +219,23 @@ def _evaluate_task(env_id: str, client: MolmoActClientBase, config: EvalConfig) 
         sensor_configs=dict(shader_pack=config.shader_pack),
         sim_config=dict(sim_freq=config.sim_freq, control_freq=config.control_freq),
     )
+    if robot_uids is not None:
+        make_kwargs["robot_uids"] = robot_uids
+    env = gym.make(env_id, **make_kwargs)
+
+    instruction = (
+        config.language_instruction
+        or DEFAULT_LANGUAGE_INSTRUCTIONS.get(env_id)
+        or getattr(env.unwrapped, "INSTRUCTION", None)
+        or env_id
+    )
+    logger.info("─" * 50)
+    logger.info("Task: %s  |  robot: %s  |  instruction: %s",
+                env_id, robot_uids or "(env default)", instruction)
 
     out_dir = Path(config.output_dir)
     episodes, successes, rewards, steps_list = [], [], [], []
+    in_box_counts: list[int] = []
 
     pbar = tqdm(range(config.n_episodes), desc=env_id, leave=False)
     for ep in pbar:
@@ -226,10 +254,12 @@ def _evaluate_task(env_id: str, client: MolmoActClientBase, config: EvalConfig) 
         episodes.append({
             "episode": ep,
             "success": result["success"],
+            "n_in_box": result["n_in_box"],
             "reward": float(result["total_reward"]),
             "steps": result["steps"],
         })
         successes.append(result["success"])
+        in_box_counts.append(result["n_in_box"])
         rewards.append(result["total_reward"])
         steps_list.append(result["steps"])
 
@@ -240,20 +270,23 @@ def _evaluate_task(env_id: str, client: MolmoActClientBase, config: EvalConfig) 
             for cam, frame in result["input_frames"].items():
                 _save_image(frame, out_dir / "frames" / env_id / f"ep{ep:03d}_{cam}.png")
 
-        pbar.set_postfix(success=f"{np.mean(successes)*100:.0f}%")
+        pbar.set_postfix(success=f"{np.mean(successes)*100:.0f}%",
+                         in_box=f"{np.mean(in_box_counts):.2f}")
 
     env.close()
 
     summary = {
         "env_id": env_id,
-        "success_rate": float(np.mean(successes)),
-        "avg_reward":   float(np.mean(rewards)),
-        "avg_steps":    float(np.mean(steps_list)),
-        "episodes":     episodes,
+        "success_rate":  float(np.mean(successes)),
+        "avg_n_in_box":  float(np.mean(in_box_counts)),
+        "n_in_box_hist": {str(k): int(np.sum(np.array(in_box_counts) == k)) for k in sorted(set(in_box_counts))},
+        "avg_reward":    float(np.mean(rewards)),
+        "avg_steps":     float(np.mean(steps_list)),
+        "episodes":      episodes,
     }
-    logger.info("%s  success=%.0f%%  avg_reward=%.2f  avg_steps=%.0f",
-                env_id, summary["success_rate"] * 100,
-                summary["avg_reward"], summary["avg_steps"])
+    logger.info("%s  success=%.0f%%  avg_n_in_box=%.2f  hist=%s  avg_steps=%.0f",
+                env_id, summary["success_rate"] * 100, summary["avg_n_in_box"],
+                summary["n_in_box_hist"], summary["avg_steps"])
     return summary
 
 
@@ -267,7 +300,7 @@ def main() -> None:
             "  -e BimanualYAMPutEverythingInBox-v1"
         )
 
-    _clients = {"remote-droid": DroidClient, "remote-yam": YAMClient}
+    _clients = {"remote-droid": DroidClient, "remote-yam": YAMClient, "remote-dk1": DK1Client}
     if config.policy_type not in _clients:
         raise SystemExit(f"Unknown --policy-type '{config.policy_type}'. "
                          f"Known: {sorted(_clients.keys())}")
