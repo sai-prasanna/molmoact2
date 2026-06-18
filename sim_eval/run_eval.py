@@ -57,7 +57,7 @@ class EvalConfig:
     """MolmoAct2 closed-loop policy evaluation on ManiSkill."""
 
     policy_type: Annotated[PolicyType, tyro.conf.arg(aliases=["-p"])] = "remote-yam"
-    """'remote-droid' or 'remote-yam'."""
+    """'remote-droid', 'remote-yam', or 'remote-dk1'."""
 
     robot_uids: Optional[str] = None
     """Override the robot. Default: derived from --policy-type (yam/dk1)."""

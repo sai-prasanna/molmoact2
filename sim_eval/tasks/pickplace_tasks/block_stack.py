@@ -7,11 +7,10 @@ overrides success_fn to use blocks_stacked.
 """
 
 import sapien
+import sapien.physx as physx
 import torch
 
-import mani_skill.envs.utils.randomization as randomization
 from mani_skill.utils.registration import register_env
-from mani_skill.utils.structs.pose import Pose
 
 from ..pickplace_base import BimanualPickPlaceEnv
 from ..success_logic import blocks_stacked
@@ -51,7 +50,15 @@ class BimanualBlockStackEnv(BimanualPickPlaceEnv):
             builder.add_box_visual(half_size=hs, material=mat)
             builder.add_box_collision(half_size=hs)
             builder.initial_pose = sapien.Pose()
-            objs.append(builder.build(name=f"block_{i}_{cname}"))
+            obj = builder.build(name=f"block_{i}_{cname}")
+            for body in obj._bodies:
+                for cs in body.get_collision_shapes():
+                    cs.physical_material = physx.PhysxMaterial(
+                        static_friction=self.object_friction,
+                        dynamic_friction=self.object_friction,
+                        restitution=0.0,
+                    )
+            objs.append(obj)
         return objs
 
     def _after_reconfigure(self, options: dict):
