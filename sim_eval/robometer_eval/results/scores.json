@@ -1,0 +1,572 @@
+[
+  {
+    "collection": "dk1_2620105",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 0,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620105/20260618_114931/videos/DK1PutEverythingInBox-v1/ep000.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.8381253480911255,
+      "max": 0.8381253480911255,
+      "mean": 0.4479230046272278
+    },
+    "success_prob": {
+      "final": 0.83203125,
+      "max": 0.83203125,
+      "mean": 0.11801767349243164
+    }
+  },
+  {
+    "collection": "dk1_2620105",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 1,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620105/20260618_114931/videos/DK1PutEverythingInBox-v1/ep001.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.8982357978820801,
+      "max": 0.8982357978820801,
+      "mean": 0.47501420974731445
+    },
+    "success_prob": {
+      "final": 0.9296875,
+      "max": 0.9296875,
+      "mean": 0.12271690368652344
+    }
+  },
+  {
+    "collection": "dk1_2620105",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 2,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620105/20260618_114931/videos/DK1PutEverythingInBox-v1/ep002.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 1,
+    "progress": {
+      "final": 0.7518802881240845,
+      "max": 0.8010770082473755,
+      "mean": 0.4688483476638794
+    },
+    "success_prob": {
+      "final": 0.318359375,
+      "max": 0.318359375,
+      "mean": 0.08914422988891602
+    }
+  },
+  {
+    "collection": "dk1_2620105",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 3,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620105/20260618_114931/videos/DK1PutEverythingInBox-v1/ep003.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.8054789900779724,
+      "max": 0.8054789900779724,
+      "mean": 0.43349891901016235
+    },
+    "success_prob": {
+      "final": 0.63671875,
+      "max": 0.63671875,
+      "mean": 0.10122299194335938
+    }
+  },
+  {
+    "collection": "dk1_2620105",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 4,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620105/20260618_114931/videos/DK1PutEverythingInBox-v1/ep004.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.818246603012085,
+      "max": 0.818246603012085,
+      "mean": 0.4775787889957428
+    },
+    "success_prob": {
+      "final": 0.796875,
+      "max": 0.796875,
+      "mean": 0.10370397567749023
+    }
+  },
+  {
+    "collection": "dk1_2620105",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 5,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620105/20260618_114931/videos/DK1PutEverythingInBox-v1/ep005.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.8328210115432739,
+      "max": 0.8328210115432739,
+      "mean": 0.40579167008399963
+    },
+    "success_prob": {
+      "final": 0.84765625,
+      "max": 0.84765625,
+      "mean": 0.11019730567932129
+    }
+  },
+  {
+    "collection": "dk1_2620105",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 6,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620105/20260618_114931/videos/DK1PutEverythingInBox-v1/ep006.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.817952036857605,
+      "max": 0.817952036857605,
+      "mean": 0.3654019236564636
+    },
+    "success_prob": {
+      "final": 0.76953125,
+      "max": 0.76953125,
+      "mean": 0.09894847869873047
+    }
+  },
+  {
+    "collection": "dk1_2620105",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 7,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620105/20260618_114931/videos/DK1PutEverythingInBox-v1/ep007.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 1,
+    "progress": {
+      "final": 0.650680422782898,
+      "max": 0.6789487600326538,
+      "mean": 0.4915944039821625
+    },
+    "success_prob": {
+      "final": 0.0361328125,
+      "max": 0.0361328125,
+      "mean": 0.01086282730102539
+    }
+  },
+  {
+    "collection": "dk1_2620105",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 8,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620105/20260618_114931/videos/DK1PutEverythingInBox-v1/ep008.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.8579054474830627,
+      "max": 0.8579054474830627,
+      "mean": 0.4276658296585083
+    },
+    "success_prob": {
+      "final": 0.890625,
+      "max": 0.890625,
+      "mean": 0.14176583290100098
+    }
+  },
+  {
+    "collection": "dk1_2620105",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 9,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620105/20260618_114931/videos/DK1PutEverythingInBox-v1/ep009.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.8110044002532959,
+      "max": 0.8110044002532959,
+      "mean": 0.38556939363479614
+    },
+    "success_prob": {
+      "final": 0.74609375,
+      "max": 0.74609375,
+      "mean": 0.09616422653198242
+    }
+  },
+  {
+    "collection": "dk1_2620104",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 0,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620104/20260618_114820/videos/DK1PutEverythingInBox-v1/ep000.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.8654913902282715,
+      "max": 0.8654913902282715,
+      "mean": 0.406505286693573
+    },
+    "success_prob": {
+      "final": 0.8984375,
+      "max": 0.8984375,
+      "mean": 0.11693525314331055
+    }
+  },
+  {
+    "collection": "dk1_2620104",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 1,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620104/20260618_114820/videos/DK1PutEverythingInBox-v1/ep001.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.26514971256256104,
+      "max": 0.523212194442749,
+      "mean": 0.30431458353996277
+    },
+    "success_prob": {
+      "final": 0.00159454345703125,
+      "max": 0.002471923828125,
+      "mean": 0.0011849403381347656
+    }
+  },
+  {
+    "collection": "dk1_2620104",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 2,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620104/20260618_114820/videos/DK1PutEverythingInBox-v1/ep002.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.851976215839386,
+      "max": 0.851976215839386,
+      "mean": 0.40422165393829346
+    },
+    "success_prob": {
+      "final": 0.8125,
+      "max": 0.8125,
+      "mean": 0.10428285598754883
+    }
+  },
+  {
+    "collection": "dk1_2620104",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 3,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620104/20260618_114820/videos/DK1PutEverythingInBox-v1/ep003.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.4619697332382202,
+      "max": 0.4754737317562103,
+      "mean": 0.3297836184501648
+    },
+    "success_prob": {
+      "final": 0.007354736328125,
+      "max": 0.007354736328125,
+      "mean": 0.0016579627990722656
+    }
+  },
+  {
+    "collection": "dk1_2620104",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 4,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620104/20260618_114820/videos/DK1PutEverythingInBox-v1/ep004.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 1,
+    "progress": {
+      "final": 0.7059808373451233,
+      "max": 0.7059808373451233,
+      "mean": 0.2927163541316986
+    },
+    "success_prob": {
+      "final": 0.271484375,
+      "max": 0.271484375,
+      "mean": 0.03455352783203125
+    }
+  },
+  {
+    "collection": "dk1_2620104",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 5,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620104/20260618_114820/videos/DK1PutEverythingInBox-v1/ep005.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.2448084056377411,
+      "max": 0.32110750675201416,
+      "mean": 0.2527465522289276
+    },
+    "success_prob": {
+      "final": 0.0023956298828125,
+      "max": 0.0023956298828125,
+      "mean": 0.0008807182312011719
+    }
+  },
+  {
+    "collection": "dk1_2620104",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 6,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620104/20260618_114820/videos/DK1PutEverythingInBox-v1/ep006.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.9358688592910767,
+      "max": 0.9358688592910767,
+      "mean": 0.4575900435447693
+    },
+    "success_prob": {
+      "final": 0.96875,
+      "max": 0.96875,
+      "mean": 0.14958620071411133
+    }
+  },
+  {
+    "collection": "dk1_2620104",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 7,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620104/20260618_114820/videos/DK1PutEverythingInBox-v1/ep007.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.9142169952392578,
+      "max": 0.9142169952392578,
+      "mean": 0.3911256790161133
+    },
+    "success_prob": {
+      "final": 0.953125,
+      "max": 0.953125,
+      "mean": 0.13586902618408203
+    }
+  },
+  {
+    "collection": "dk1_2620104",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 8,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620104/20260618_114820/videos/DK1PutEverythingInBox-v1/ep008.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 1,
+    "progress": {
+      "final": 0.6052104234695435,
+      "max": 0.6466338038444519,
+      "mean": 0.4704999327659607
+    },
+    "success_prob": {
+      "final": 0.0361328125,
+      "max": 0.0361328125,
+      "mean": 0.009351730346679688
+    }
+  },
+  {
+    "collection": "dk1_2620104",
+    "env_id": "DK1PutEverythingInBox-v1",
+    "episode": 9,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1_2620104/20260618_114820/videos/DK1PutEverythingInBox-v1/ep009.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.845369815826416,
+      "max": 0.845369815826416,
+      "mean": 0.3523278534412384
+    },
+    "success_prob": {
+      "final": 0.8671875,
+      "max": 0.8671875,
+      "mean": 0.10997247695922852
+    }
+  },
+  {
+    "collection": "yam_2620161",
+    "env_id": "BimanualYAMPutEverythingInBox-v1",
+    "episode": 0,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yam_2620161/20260618_115653/videos/BimanualYAMPutEverythingInBox-v1/ep000.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.855408787727356,
+      "max": 0.855408787727356,
+      "mean": 0.4913164973258972
+    },
+    "success_prob": {
+      "final": 0.8828125,
+      "max": 0.8828125,
+      "mean": 0.12285995483398438
+    }
+  },
+  {
+    "collection": "yam_2620161",
+    "env_id": "BimanualYAMPutEverythingInBox-v1",
+    "episode": 1,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yam_2620161/20260618_115653/videos/BimanualYAMPutEverythingInBox-v1/ep001.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 1,
+    "progress": {
+      "final": 0.7658399939537048,
+      "max": 0.7770768404006958,
+      "mean": 0.4066092371940613
+    },
+    "success_prob": {
+      "final": 0.3984375,
+      "max": 0.3984375,
+      "mean": 0.06459546089172363
+    }
+  },
+  {
+    "collection": "yam_2620161",
+    "env_id": "BimanualYAMPutEverythingInBox-v1",
+    "episode": 2,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yam_2620161/20260618_115653/videos/BimanualYAMPutEverythingInBox-v1/ep002.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 1,
+    "progress": {
+      "final": 0.7713925242424011,
+      "max": 0.7713925242424011,
+      "mean": 0.3211435377597809
+    },
+    "success_prob": {
+      "final": 0.53515625,
+      "max": 0.53515625,
+      "mean": 0.06827974319458008
+    }
+  },
+  {
+    "collection": "yam_2620161",
+    "env_id": "BimanualYAMPutEverythingInBox-v1",
+    "episode": 3,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yam_2620161/20260618_115653/videos/BimanualYAMPutEverythingInBox-v1/ep003.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.828628659248352,
+      "max": 0.828628659248352,
+      "mean": 0.47873637080192566
+    },
+    "success_prob": {
+      "final": 0.78125,
+      "max": 0.78125,
+      "mean": 0.11255240440368652
+    }
+  },
+  {
+    "collection": "yam_2620161",
+    "env_id": "BimanualYAMPutEverythingInBox-v1",
+    "episode": 4,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yam_2620161/20260618_115653/videos/BimanualYAMPutEverythingInBox-v1/ep004.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 1,
+    "progress": {
+      "final": 0.7441792488098145,
+      "max": 0.7441792488098145,
+      "mean": 0.5137381553649902
+    },
+    "success_prob": {
+      "final": 0.2451171875,
+      "max": 0.2451171875,
+      "mean": 0.05245399475097656
+    }
+  },
+  {
+    "collection": "yam_2620161",
+    "env_id": "BimanualYAMPutEverythingInBox-v1",
+    "episode": 5,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yam_2620161/20260618_115653/videos/BimanualYAMPutEverythingInBox-v1/ep005.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 1,
+    "progress": {
+      "final": 0.814399003982544,
+      "max": 0.814399003982544,
+      "mean": 0.419344961643219
+    },
+    "success_prob": {
+      "final": 0.7734375,
+      "max": 0.7734375,
+      "mean": 0.1158900260925293
+    }
+  },
+  {
+    "collection": "yam_2620161",
+    "env_id": "BimanualYAMPutEverythingInBox-v1",
+    "episode": 6,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yam_2620161/20260618_115653/videos/BimanualYAMPutEverythingInBox-v1/ep006.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.3894702196121216,
+      "max": 0.3894702196121216,
+      "mean": 0.2510516345500946
+    },
+    "success_prob": {
+      "final": 0.003082275390625,
+      "max": 0.003082275390625,
+      "mean": 0.0010459423065185547
+    }
+  },
+  {
+    "collection": "yam_2620161",
+    "env_id": "BimanualYAMPutEverythingInBox-v1",
+    "episode": 7,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yam_2620161/20260618_115653/videos/BimanualYAMPutEverythingInBox-v1/ep007.mp4",
+    "num_frames": 8,
+    "gt_success": true,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.8690424561500549,
+      "max": 0.8690424561500549,
+      "mean": 0.4553331136703491
+    },
+    "success_prob": {
+      "final": 0.91796875,
+      "max": 0.91796875,
+      "mean": 0.17508745193481445
+    }
+  },
+  {
+    "collection": "yam_2620161",
+    "env_id": "BimanualYAMPutEverythingInBox-v1",
+    "episode": 8,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yam_2620161/20260618_115653/videos/BimanualYAMPutEverythingInBox-v1/ep008.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.17116770148277283,
+      "max": 0.45647403597831726,
+      "mean": 0.2624627649784088
+    },
+    "success_prob": {
+      "final": 0.00128173828125,
+      "max": 0.00154876708984375,
+      "mean": 0.0009424686431884766
+    }
+  },
+  {
+    "collection": "yam_2620161",
+    "env_id": "BimanualYAMPutEverythingInBox-v1",
+    "episode": 9,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yam_2620161/20260618_115653/videos/BimanualYAMPutEverythingInBox-v1/ep009.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 1,
+    "progress": {
+      "final": 0.8389849662780762,
+      "max": 0.8389849662780762,
+      "mean": 0.46007823944091797
+    },
+    "success_prob": {
+      "final": 0.7578125,
+      "max": 0.7578125,
+      "mean": 0.15175461769104004
+    }
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "n": 30,
+  "n_success": 16,
+  "n_fail": 14,
+  "progress.final": {
+    "auroc_success": 0.9598214285714286,
+    "spearman_n_in_box": 0.8488394891583652
+  },
+  "progress.max": {
+    "auroc_success": 0.9598214285714286,
+    "spearman_n_in_box": 0.8488394891583652
+  },
+  "progress.mean": {
+    "auroc_success": 0.6339285714285714,
+    "spearman_n_in_box": 0.38948200328628757
+  },
+  "success_prob.final": {
+    "auroc_success": 0.9776785714285714,
+    "spearman_n_in_box": 0.8735407057701174
+  },
+  "success_prob.max": {
+    "auroc_success": 0.9776785714285714,
+    "spearman_n_in_box": 0.8735407057701174
+  },
+  "success_prob.mean": {
+    "auroc_success": 0.8973214285714286,
+    "spearman_n_in_box": 0.7627253380843281
+  }
+}
