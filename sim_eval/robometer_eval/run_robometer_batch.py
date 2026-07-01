@@ -59,10 +59,12 @@ def build_model(model_path: str, device: torch.device):
         getattr(loss_config, "progress_discrete_bins", None)
         or getattr(exp_config.model, "progress_discrete_bins", 10)
     )
-    return reward_model, tokenizer, collator, is_discrete, num_bins
+    model_dtype = next(reward_model.parameters()).dtype
+    return reward_model, tokenizer, collator, is_discrete, num_bins, model_dtype
 
 
-def infer_video(frames, task, *, reward_model, tokenizer, collator, is_discrete, num_bins, device):
+def infer_video(frames, task, *, reward_model, tokenizer, collator, is_discrete, num_bins,
+                device, model_dtype):
     """Return (progress_per_frame, success_prob_per_frame) as float32 arrays."""
     T = int(frames.shape[0])
     traj = Trajectory(
@@ -77,7 +79,11 @@ def infer_video(frames, task, *, reward_model, tokenizer, collator, is_discrete,
     progress_inputs = batch["progress_inputs"]
     for k, v in progress_inputs.items():
         if hasattr(v, "to"):
-            progress_inputs[k] = v.to(device)
+            v = v.to(device)
+            # bf16 weights + fp32 pixel_values -> layer_norm dtype mismatch; cast floats to model dtype
+            if torch.is_floating_point(v):
+                v = v.to(model_dtype)
+            progress_inputs[k] = v
 
     results = compute_batch_outputs(
         reward_model, tokenizer, progress_inputs,
@@ -118,7 +124,8 @@ def main():
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"[setup] loading {args.model_path} on {device} ...", flush=True)
-    model, tokenizer, collator, is_discrete, num_bins = build_model(args.model_path, device)
+    model, tokenizer, collator, is_discrete, num_bins, model_dtype = build_model(args.model_path, device)
+    print(f"[setup] model_dtype={model_dtype}", flush=True)
     print(f"[setup] done. is_discrete={is_discrete} num_bins={num_bins}", flush=True)
 
     records = []
@@ -144,6 +151,7 @@ def main():
             progress, success = infer_video(
                 frames, TASK_INSTRUCTION, reward_model=model, tokenizer=tokenizer,
                 collator=collator, is_discrete=is_discrete, num_bins=num_bins, device=device,
+                model_dtype=model_dtype,
             )
             stem = f"{coll_name}__{env_id}__ep{ep:03d}"
             np.save(out_dir / "per_video" / f"{stem}.npy", progress)
