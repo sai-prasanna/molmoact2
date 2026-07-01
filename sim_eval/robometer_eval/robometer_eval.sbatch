@@ -21,10 +21,13 @@ echo "job ${SLURM_JOB_ID:-local} on $(hostname); GPU:"
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader || true
 
 cd "${ROBOMETER}"
+# Robometer-4B is trained on 8 frames; Unsloth forces eager attention (O(seq^2) mem), and the
+# render frames are 720x1280, so 32 frames OOMs a 40GB A100. 8 frames matches training and fits.
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 uv run python "${REPO}/sim_eval/robometer_eval/run_robometer_batch.py" \
     --repo-root "${REPO}" \
     --out-dir "${OUT}" \
-    --fps 8.0 --max-frames 32
+    --fps 8.0 --max-frames 8
 
 echo "=== analysis ==="
 cd "${REPO}"

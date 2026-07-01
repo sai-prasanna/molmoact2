@@ -128,8 +128,8 @@ def main():
     ap.add_argument("--out-dir", required=True)
     ap.add_argument("--fps", type=float, default=8.0,
                     help="Sampling fps; capped by --max-frames (default 8)")
-    ap.add_argument("--max-frames", type=int, default=32,
-                    help="Max frames evenly sampled across each video (default 32)")
+    ap.add_argument("--max-frames", type=int, default=8,
+                    help="Max frames evenly sampled across each video (default 8, matches training)")
     ap.add_argument("--limit", type=int, default=0,
                     help="If >0, process only the first N videos (smoke test)")
     args = ap.parse_args()
