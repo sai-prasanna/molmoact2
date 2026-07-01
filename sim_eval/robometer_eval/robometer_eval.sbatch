@@ -15,7 +15,8 @@ set -euo pipefail
 
 ROBOMETER=/mnt/lustre/work/martius/mot244/robometer
 REPO=/mnt/lustre/work/martius/mot244/molmoact2
-OUT="${REPO}/sim_eval/robometer_eval/results"
+GROUP="${1:-puteverything}"   # puteverything | tasksuite | all
+OUT="${REPO}/sim_eval/robometer_eval/results_${GROUP}"
 
 echo "job ${SLURM_JOB_ID:-local} on $(hostname); GPU:"
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader || true
@@ -27,6 +28,7 @@ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 uv run python "${REPO}/sim_eval/robometer_eval/run_robometer_batch.py" \
     --repo-root "${REPO}" \
     --out-dir "${OUT}" \
+    --group "${GROUP}" \
     --fps 8.0 --max-frames 8
 
 echo "=== analysis ==="

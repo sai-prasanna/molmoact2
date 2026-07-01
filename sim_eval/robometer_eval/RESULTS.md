@@ -33,8 +33,15 @@ actually placed (Spearman 0.874). The per-video table shows the graded behaviour
 - `n_in_box = 2` (all placed, all successes) → success_prob ≈ 0.64–0.97
 
 The only overlap is between "placed 1 object" failures and genuine successes — exactly the ambiguous
-middle you'd expect a progress model to be least certain about. Full per-video numbers: `results/scores.json`;
-aggregate metrics: `results/metrics.json`.
+middle you'd expect a progress model to be least certain about. Full per-video numbers: `results_puteverything/scores.json`;
+aggregate metrics: `results_puteverything/metrics.json`.
+
+**Note on independence:** in this data success ⟺ `n_in_box == 2` exactly (0 and 1 objects are always
+failures, 2 objects always a success), so the AUROC(success) and the top end of Spearman(n_in_box) are
+largely the *same* measurement, not two independent confirmations. The genuinely independent evidence
+that robometer reads *degree* of progress (not just success/fail) is the separation *within failures*:
+`n_in_box=0` → success_prob ≈ 0.002–0.007 vs `n_in_box=1` → ≈ 0.03–0.77. That ordering is real and is
+corroborated by the all-failure task-suite run below.
 
 ## Caveat (important for interpretation)
 Robometer was trained on RBM-1M **real-robot** video; our inputs are ManiSkill **renders**

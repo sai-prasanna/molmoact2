@@ -96,6 +96,30 @@ def main():
             metrics[f"{score_key}.{red}"] = {"auroc_success": a, "spearman_n_in_box": s}
             print(f"{score_key:<16}{red:<10}{a:<14.3f}{s:<20.3f}")
 
+    # Per-env breakdown — essential for the all-failure task suite, where many tasks have
+    # zero n_in_box variance (no graded signal) and success is uniformly False (AUROC undefined).
+    envs = sorted({r["env_id"] for r in recs})
+    if len(envs) > 1:
+        print("\nPer-env (success_prob.final vs n_in_box):")
+        print(f"{'env_id':<30}{'n':<4}{'n_in_box vals':<20}{'succ':<6}{'Spearman':<10}")
+        pooled_vals, pooled_nbox = [], []
+        for env in envs:
+            er = [r for r in recs if r["env_id"] == env]
+            nb = np.array([r["gt_n_in_box"] for r in er], dtype=float)
+            sv = np.array([r["success_prob"]["final"] for r in er], dtype=float)
+            nsucc = sum(r["gt_success"] for r in er)
+            uniq = sorted(set(int(x) for x in nb))
+            rho = spearman(sv, nb) if len(uniq) > 1 else float("nan")
+            print(f"{env:<30}{len(er):<4}{str(uniq):<20}{nsucc:<6}{rho:<10.3f}")
+            if len(uniq) > 1:  # only tasks with graded signal contribute to the pooled stat
+                pooled_vals.extend(sv.tolist()); pooled_nbox.extend(nb.tolist())
+        if pooled_vals:
+            pr = spearman(np.array(pooled_vals), np.array(pooled_nbox))
+            metrics["pooled_spearman_n_in_box_variance_only"] = pr
+            metrics["pooled_n_variance_only"] = len(pooled_vals)
+            print(f"\nPooled Spearman over tasks WITH n_in_box variance "
+                  f"(N={len(pooled_vals)}): {pr:.3f}")
+
     print("\nPer-video (sorted by ground-truth then robometer progress.final):")
     print(f"{'collection':<14}{'ep':<5}{'gt_succ':<9}{'n_box':<7}"
           f"{'prog.final':<12}{'prog.max':<10}{'succ.max':<10}")

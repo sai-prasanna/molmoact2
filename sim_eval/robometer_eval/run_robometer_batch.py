@@ -33,14 +33,36 @@ from robometer.evals.eval_viz_utils import extract_frames
 from robometer.utils.save import load_model_from_hf
 from robometer.utils.setup_utils import setup_batch_collator
 
-# Rollout collections that have BOTH saved videos and per-episode labels.
-# (path is relative to the molmoact2 repo root; env is the task key inside results.json)
-COLLECTIONS = [
-    ("dk1_2620105", "sim_eval/outputs/dk1_2620105/20260618_114931", "DK1PutEverythingInBox-v1"),
-    ("dk1_2620104", "sim_eval/outputs/dk1_2620104/20260618_114820", "DK1PutEverythingInBox-v1"),
-    ("yam_2620161", "sim_eval/outputs/yam_2620161/20260618_115653", "BimanualYAMPutEverythingInBox-v1"),
-]
-TASK_INSTRUCTION = "put everything into the box"
+# Rollout collections that have saved videos + per-episode labels, grouped by experiment.
+# Each collection is (name, path-relative-to-repo-root); a collection's results.json may hold
+# several tasks (env_ids). Instructions per env_id come from INSTRUCTIONS below.
+GROUPS = {
+    # Successful/mixed PutEverythingInBox rollouts (16 succ / 14 fail): success-vs-fail + n_in_box.
+    "puteverything": [
+        ("dk1_2620105", "sim_eval/outputs/dk1_2620105/20260618_114931"),
+        ("dk1_2620104", "sim_eval/outputs/dk1_2620104/20260618_114820"),
+        ("yam_2620161", "sim_eval/outputs/yam_2620161/20260618_115653"),
+    ],
+    # The 8-task pick-place suite (this branch's tasks): all failures, so n_in_box-only correlation.
+    "tasksuite": [
+        ("dk1tasks_2647334", "sim_eval/outputs/dk1tasks_2647334/20260701_163624"),
+        ("yamtasks_2621307", "sim_eval/outputs/yamtasks_2621307/20260618_172556"),
+    ],
+}
+
+# Per-env instruction strings, copied from the tasks' INSTRUCTION class attrs (tasks/**/*.py).
+INSTRUCTIONS = {
+    "DK1PutEverythingInBox-v1": "put everything into the box",
+    "BimanualYAMPutEverythingInBox-v1": "put everything into the box",
+    "BimanualBox-v1": "Place the can, cracker box, sugar box, and pudding box into the black box.",
+    "BimanualToy-v1": "Place the Rubik's cube, the lego block, and the toy airplane into the box.",
+    "BimanualCup-v1": "Place the cups, then the fork and spoon, into the container.",
+    "BimanualMed-v1": "Place the medicine boxes into the container.",
+    "BimanualTool-v1": "Place the screwdriver, wrench, clamp, and scissors into the black box.",
+    "BimanualGrocery-v1": "Place the cracker box, soup can, and sugar box into the basket.",
+    "BimanualUtensilTray-v1": "Place the fork, spoon, and knife into the tray.",
+    "BimanualBlockStack-v1": "Stack the red, green, and yellow blocks.",
+}
 
 
 def build_model(model_path: str, device: torch.device):
@@ -132,7 +154,14 @@ def main():
                     help="Max frames evenly sampled across each video (default 8, matches training)")
     ap.add_argument("--limit", type=int, default=0,
                     help="If >0, process only the first N videos (smoke test)")
+    ap.add_argument("--group", choices=[*GROUPS, "all"], default="puteverything",
+                    help="Which collection group to run (default: puteverything)")
     args = ap.parse_args()
+
+    if args.group == "all":
+        collections = [c for g in GROUPS.values() for c in g]
+    else:
+        collections = GROUPS[args.group]
 
     repo = Path(args.repo_root)
     out_dir = Path(args.out_dir)
@@ -145,46 +174,51 @@ def main():
     print(f"[setup] done. is_discrete={is_discrete} num_bins={num_bins}", flush=True)
 
     records = []
-    for coll_name, coll_rel, env_id in COLLECTIONS:
+    for coll_name, coll_rel in collections:
         coll_dir = repo / coll_rel
         results = json.loads((coll_dir / "results.json").read_text())
-        labels = {e["episode"]: e for e in results["tasks"][env_id]["episodes"]}
-        video_dir = coll_dir / "videos" / env_id
-        for vid in sorted(video_dir.glob("ep*.mp4")):
-            if args.limit and len(records) >= args.limit:
-                break
-            ep = int(vid.stem.replace("ep", ""))
-            lab = labels.get(ep)
-            if lab is None:
-                print(f"[skip] {vid} has no label", flush=True)
+        for env_id, task_res in results["tasks"].items():
+            instruction = INSTRUCTIONS.get(env_id)
+            if instruction is None:
+                print(f"[skip] no instruction for env {env_id}", flush=True)
                 continue
-            frames = extract_frames(str(vid), fps=args.fps, max_frames=args.max_frames)
-            if frames is None or frames.size == 0:
-                print(f"[skip] {vid} no frames", flush=True)
-                continue
-            if frames.dtype != np.uint8:
-                frames = np.clip(frames, 0, 255).astype(np.uint8)
-            progress, success = infer_video(
-                frames, TASK_INSTRUCTION, reward_model=model, tokenizer=tokenizer,
-                collator=collator, is_discrete=is_discrete, num_bins=num_bins, device=device,
-                model_dtype=model_dtype,
-            )
-            stem = f"{coll_name}__{env_id}__ep{ep:03d}"
-            np.save(out_dir / "per_video" / f"{stem}.npy", progress)
-            np.save(out_dir / "per_video" / f"{stem}_success.npy", success)
-            rec = {
-                "collection": coll_name, "env_id": env_id, "episode": ep,
-                "video": str(vid), "num_frames": int(frames.shape[0]),
-                "gt_success": bool(lab["success"]), "gt_n_in_box": int(lab["n_in_box"]),
-                "progress": reductions(progress), "success_prob": reductions(success),
-            }
-            records.append(rec)
-            print(f"[done] {stem} frames={frames.shape[0]} "
-                  f"gt_success={rec['gt_success']} n_in_box={rec['gt_n_in_box']} "
-                  f"prog_final={rec['progress']['final']} succ_max={rec['success_prob']['max']}",
-                  flush=True)
-            # write incrementally so a crash still leaves partial results
-            (out_dir / "scores.json").write_text(json.dumps(records, indent=2))
+            labels = {e["episode"]: e for e in task_res["episodes"]}
+            video_dir = coll_dir / "videos" / env_id
+            for vid in sorted(video_dir.glob("ep*.mp4")):
+                if args.limit and len(records) >= args.limit:
+                    break
+                ep = int(vid.stem.replace("ep", ""))
+                lab = labels.get(ep)
+                if lab is None:
+                    print(f"[skip] {vid} has no label", flush=True)
+                    continue
+                frames = extract_frames(str(vid), fps=args.fps, max_frames=args.max_frames)
+                if frames is None or frames.size == 0:
+                    print(f"[skip] {vid} no frames", flush=True)
+                    continue
+                if frames.dtype != np.uint8:
+                    frames = np.clip(frames, 0, 255).astype(np.uint8)
+                progress, success = infer_video(
+                    frames, instruction, reward_model=model, tokenizer=tokenizer,
+                    collator=collator, is_discrete=is_discrete, num_bins=num_bins, device=device,
+                    model_dtype=model_dtype,
+                )
+                stem = f"{coll_name}__{env_id}__ep{ep:03d}"
+                np.save(out_dir / "per_video" / f"{stem}.npy", progress)
+                np.save(out_dir / "per_video" / f"{stem}_success.npy", success)
+                rec = {
+                    "collection": coll_name, "env_id": env_id, "episode": ep,
+                    "video": str(vid), "num_frames": int(frames.shape[0]),
+                    "gt_success": bool(lab["success"]), "gt_n_in_box": int(lab["n_in_box"]),
+                    "progress": reductions(progress), "success_prob": reductions(success),
+                }
+                records.append(rec)
+                print(f"[done] {stem} frames={frames.shape[0]} "
+                      f"gt_success={rec['gt_success']} n_in_box={rec['gt_n_in_box']} "
+                      f"prog_final={rec['progress']['final']} succ_max={rec['success_prob']['max']}",
+                      flush=True)
+                # write incrementally so a crash still leaves partial results
+                (out_dir / "scores.json").write_text(json.dumps(records, indent=2))
 
     print(f"[all done] {len(records)} videos -> {out_dir/'scores.json'}", flush=True)
 
