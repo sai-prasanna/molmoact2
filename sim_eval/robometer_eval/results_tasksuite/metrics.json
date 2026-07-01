@@ -1,0 +1,31 @@
+{
+  "n": 33,
+  "n_success": 0,
+  "n_fail": 33,
+  "progress.final": {
+    "auroc_success": NaN,
+    "spearman_n_in_box": 0.7219382346649776
+  },
+  "progress.max": {
+    "auroc_success": NaN,
+    "spearman_n_in_box": 0.7353418294245387
+  },
+  "progress.mean": {
+    "auroc_success": NaN,
+    "spearman_n_in_box": 0.48252941134420096
+  },
+  "success_prob.final": {
+    "auroc_success": NaN,
+    "spearman_n_in_box": 0.7183805017885112
+  },
+  "success_prob.max": {
+    "auroc_success": NaN,
+    "spearman_n_in_box": 0.7183805017885112
+  },
+  "success_prob.mean": {
+    "auroc_success": NaN,
+    "spearman_n_in_box": 0.7064725484039456
+  },
+  "pooled_spearman_n_in_box_variance_only": 0.8536425862687037,
+  "pooled_n_variance_only": 18
+}

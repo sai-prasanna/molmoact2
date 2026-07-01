@@ -1,0 +1,629 @@
+[
+  {
+    "collection": "dk1tasks_2647334",
+    "env_id": "BimanualCup-v1",
+    "episode": 0,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1tasks_2647334/20260701_163624/videos/BimanualCup-v1/ep000.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 1,
+    "progress": {
+      "final": 0.5270562171936035,
+      "max": 0.6189417839050293,
+      "mean": 0.37025216221809387
+    },
+    "success_prob": {
+      "final": 0.0419921875,
+      "max": 0.0419921875,
+      "mean": 0.007342815399169922
+    }
+  },
+  {
+    "collection": "dk1tasks_2647334",
+    "env_id": "BimanualCup-v1",
+    "episode": 1,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1tasks_2647334/20260701_163624/videos/BimanualCup-v1/ep001.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.6435596346855164,
+      "max": 0.6707631945610046,
+      "mean": 0.4325289726257324
+    },
+    "success_prob": {
+      "final": 0.1240234375,
+      "max": 0.1240234375,
+      "mean": 0.020644664764404297
+    }
+  },
+  {
+    "collection": "dk1tasks_2647334",
+    "env_id": "BimanualCup-v1",
+    "episode": 2,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1tasks_2647334/20260701_163624/videos/BimanualCup-v1/ep002.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 3,
+    "progress": {
+      "final": 0.8726505041122437,
+      "max": 0.8726505041122437,
+      "mean": 0.46828439831733704
+    },
+    "success_prob": {
+      "final": 0.91796875,
+      "max": 0.91796875,
+      "mean": 0.12064099311828613
+    }
+  },
+  {
+    "collection": "dk1tasks_2647334",
+    "env_id": "BimanualTool-v1",
+    "episode": 0,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1tasks_2647334/20260701_163624/videos/BimanualTool-v1/ep000.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.8276772499084473,
+      "max": 0.8276772499084473,
+      "mean": 0.5017805099487305
+    },
+    "success_prob": {
+      "final": 0.67578125,
+      "max": 0.67578125,
+      "mean": 0.10513687133789062
+    }
+  },
+  {
+    "collection": "dk1tasks_2647334",
+    "env_id": "BimanualTool-v1",
+    "episode": 1,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1tasks_2647334/20260701_163624/videos/BimanualTool-v1/ep001.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.29050853848457336,
+      "max": 0.4155072867870331,
+      "mean": 0.310644268989563
+    },
+    "success_prob": {
+      "final": 0.00506591796875,
+      "max": 0.00506591796875,
+      "mean": 0.0014286041259765625
+    }
+  },
+  {
+    "collection": "dk1tasks_2647334",
+    "env_id": "BimanualTool-v1",
+    "episode": 2,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1tasks_2647334/20260701_163624/videos/BimanualTool-v1/ep002.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 1,
+    "progress": {
+      "final": 0.5861559510231018,
+      "max": 0.5861559510231018,
+      "mean": 0.29748016595840454
+    },
+    "success_prob": {
+      "final": 0.04150390625,
+      "max": 0.04150390625,
+      "mean": 0.006074428558349609
+    }
+  },
+  {
+    "collection": "dk1tasks_2647334",
+    "env_id": "BimanualUtensilTray-v1",
+    "episode": 0,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1tasks_2647334/20260701_163624/videos/BimanualUtensilTray-v1/ep000.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.16310012340545654,
+      "max": 0.21216782927513123,
+      "mean": 0.18017038702964783
+    },
+    "success_prob": {
+      "final": 0.00141143798828125,
+      "max": 0.00141143798828125,
+      "mean": 0.0007872581481933594
+    }
+  },
+  {
+    "collection": "dk1tasks_2647334",
+    "env_id": "BimanualUtensilTray-v1",
+    "episode": 1,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1tasks_2647334/20260701_163624/videos/BimanualUtensilTray-v1/ep001.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 1,
+    "progress": {
+      "final": 0.5280006527900696,
+      "max": 0.5280006527900696,
+      "mean": 0.25500816106796265
+    },
+    "success_prob": {
+      "final": 0.008056640625,
+      "max": 0.008056640625,
+      "mean": 0.0016646385192871094
+    }
+  },
+  {
+    "collection": "dk1tasks_2647334",
+    "env_id": "BimanualUtensilTray-v1",
+    "episode": 2,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/dk1tasks_2647334/20260701_163624/videos/BimanualUtensilTray-v1/ep002.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.5113449096679688,
+      "max": 0.5443613529205322,
+      "mean": 0.3650707006454468
+    },
+    "success_prob": {
+      "final": 0.00885009765625,
+      "max": 0.00885009765625,
+      "mean": 0.0023903846740722656
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualBox-v1",
+    "episode": 0,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualBox-v1/ep000.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.29657500982284546,
+      "max": 0.3640739917755127,
+      "mean": 0.2837178409099579
+    },
+    "success_prob": {
+      "final": 0.004058837890625,
+      "max": 0.004058837890625,
+      "mean": 0.0012471675872802734
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualBox-v1",
+    "episode": 1,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualBox-v1/ep001.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.210226908326149,
+      "max": 0.5074306130409241,
+      "mean": 0.2822689414024353
+    },
+    "success_prob": {
+      "final": 0.0017547607421875,
+      "max": 0.003082275390625,
+      "mean": 0.0012941360473632812
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualBox-v1",
+    "episode": 2,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualBox-v1/ep002.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.3528447449207306,
+      "max": 0.4272867441177368,
+      "mean": 0.3233832120895386
+    },
+    "success_prob": {
+      "final": 0.0037078857421875,
+      "max": 0.0037078857421875,
+      "mean": 0.0012652873992919922
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualToy-v1",
+    "episode": 0,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualToy-v1/ep000.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.43275079131126404,
+      "max": 0.4630178213119507,
+      "mean": 0.30627042055130005
+    },
+    "success_prob": {
+      "final": 0.00885009765625,
+      "max": 0.00885009765625,
+      "mean": 0.001987934112548828
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualToy-v1",
+    "episode": 1,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualToy-v1/ep001.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.40775132179260254,
+      "max": 0.4676387906074524,
+      "mean": 0.3475288152694702
+    },
+    "success_prob": {
+      "final": 0.0169677734375,
+      "max": 0.0169677734375,
+      "mean": 0.003409862518310547
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualToy-v1",
+    "episode": 2,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualToy-v1/ep002.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.4206271767616272,
+      "max": 0.4206271767616272,
+      "mean": 0.259856641292572
+    },
+    "success_prob": {
+      "final": 0.003936767578125,
+      "max": 0.003936767578125,
+      "mean": 0.0011165142059326172
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualCup-v1",
+    "episode": 0,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualCup-v1/ep000.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 1,
+    "progress": {
+      "final": 0.5997723340988159,
+      "max": 0.6280289888381958,
+      "mean": 0.4573308825492859
+    },
+    "success_prob": {
+      "final": 0.04736328125,
+      "max": 0.04736328125,
+      "mean": 0.009593963623046875
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualCup-v1",
+    "episode": 1,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualCup-v1/ep001.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.7497211694717407,
+      "max": 0.7497211694717407,
+      "mean": 0.4216064214706421
+    },
+    "success_prob": {
+      "final": 0.31640625,
+      "max": 0.31640625,
+      "mean": 0.04524564743041992
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualCup-v1",
+    "episode": 2,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualCup-v1/ep002.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.22061073780059814,
+      "max": 0.2278454750776291,
+      "mean": 0.19948801398277283
+    },
+    "success_prob": {
+      "final": 0.0023956298828125,
+      "max": 0.0023956298828125,
+      "mean": 0.0009379386901855469
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualMed-v1",
+    "episode": 0,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualMed-v1/ep000.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.5251376628875732,
+      "max": 0.5805195569992065,
+      "mean": 0.3669890761375427
+    },
+    "success_prob": {
+      "final": 0.00885009765625,
+      "max": 0.00885009765625,
+      "mean": 0.0023534297943115234
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualMed-v1",
+    "episode": 1,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualMed-v1/ep001.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.604968786239624,
+      "max": 0.604968786239624,
+      "mean": 0.40337714552879333
+    },
+    "success_prob": {
+      "final": 0.0361328125,
+      "max": 0.0361328125,
+      "mean": 0.006130218505859375
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualMed-v1",
+    "episode": 2,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualMed-v1/ep002.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.4966543912887573,
+      "max": 0.5122316479682922,
+      "mean": 0.3191050887107849
+    },
+    "success_prob": {
+      "final": 0.0128173828125,
+      "max": 0.0128173828125,
+      "mean": 0.002449512481689453
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualTool-v1",
+    "episode": 0,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualTool-v1/ep000.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 2,
+    "progress": {
+      "final": 0.7803726196289062,
+      "max": 0.7803726196289062,
+      "mean": 0.3907007575035095
+    },
+    "success_prob": {
+      "final": 0.5234375,
+      "max": 0.5234375,
+      "mean": 0.06847047805786133
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualTool-v1",
+    "episode": 1,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualTool-v1/ep001.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.652509868144989,
+      "max": 0.652509868144989,
+      "mean": 0.2980535924434662
+    },
+    "success_prob": {
+      "final": 0.07080078125,
+      "max": 0.07080078125,
+      "mean": 0.009643077850341797
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualTool-v1",
+    "episode": 2,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualTool-v1/ep002.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.1891198456287384,
+      "max": 0.39160045981407166,
+      "mean": 0.26411622762680054
+    },
+    "success_prob": {
+      "final": 0.001068115234375,
+      "max": 0.0013275146484375,
+      "mean": 0.0006899833679199219
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualGrocery-v1",
+    "episode": 0,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualGrocery-v1/ep000.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.37760403752326965,
+      "max": 0.5034844875335693,
+      "mean": 0.34522274136543274
+    },
+    "success_prob": {
+      "final": 0.004058837890625,
+      "max": 0.004058837890625,
+      "mean": 0.0015392303466796875
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualGrocery-v1",
+    "episode": 1,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualGrocery-v1/ep001.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.430467426776886,
+      "max": 0.516645073890686,
+      "mean": 0.40408971905708313
+    },
+    "success_prob": {
+      "final": 0.02001953125,
+      "max": 0.02001953125,
+      "mean": 0.004715919494628906
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualGrocery-v1",
+    "episode": 2,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualGrocery-v1/ep002.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.56624436378479,
+      "max": 0.56624436378479,
+      "mean": 0.3603988587856293
+    },
+    "success_prob": {
+      "final": 0.01165771484375,
+      "max": 0.01165771484375,
+      "mean": 0.0027496814727783203
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualBlockStack-v1",
+    "episode": 0,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualBlockStack-v1/ep000.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.33939334750175476,
+      "max": 0.5146189332008362,
+      "mean": 0.32326167821884155
+    },
+    "success_prob": {
+      "final": 0.0033721923828125,
+      "max": 0.0033721923828125,
+      "mean": 0.0014386177062988281
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualBlockStack-v1",
+    "episode": 1,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualBlockStack-v1/ep001.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.49360668659210205,
+      "max": 0.5365341901779175,
+      "mean": 0.36582469940185547
+    },
+    "success_prob": {
+      "final": 0.01068115234375,
+      "max": 0.01068115234375,
+      "mean": 0.002620220184326172
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualBlockStack-v1",
+    "episode": 2,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualBlockStack-v1/ep002.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.5334900617599487,
+      "max": 0.5334900617599487,
+      "mean": 0.314519464969635
+    },
+    "success_prob": {
+      "final": 0.0169677734375,
+      "max": 0.0169677734375,
+      "mean": 0.003050565719604492
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualUtensilTray-v1",
+    "episode": 0,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualUtensilTray-v1/ep000.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.3580683469772339,
+      "max": 0.3580683469772339,
+      "mean": 0.25101685523986816
+    },
+    "success_prob": {
+      "final": 0.004608154296875,
+      "max": 0.004608154296875,
+      "mean": 0.0012488365173339844
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualUtensilTray-v1",
+    "episode": 1,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualUtensilTray-v1/ep001.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 0,
+    "progress": {
+      "final": 0.30156439542770386,
+      "max": 0.4120623469352722,
+      "mean": 0.26932293176651
+    },
+    "success_prob": {
+      "final": 0.0028839111328125,
+      "max": 0.0028839111328125,
+      "mean": 0.0011157989501953125
+    }
+  },
+  {
+    "collection": "yamtasks_2621307",
+    "env_id": "BimanualUtensilTray-v1",
+    "episode": 2,
+    "video": "/mnt/lustre/work/martius/mot244/molmoact2/sim_eval/outputs/yamtasks_2621307/20260618_172556/videos/BimanualUtensilTray-v1/ep002.mp4",
+    "num_frames": 8,
+    "gt_success": false,
+    "gt_n_in_box": 1,
+    "progress": {
+      "final": 0.5814446210861206,
+      "max": 0.5814446210861206,
+      "mean": 0.2831268310546875
+    },
+    "success_prob": {
+      "final": 0.0289306640625,
+      "max": 0.0289306640625,
+      "mean": 0.00453948974609375
+    }
+  }
+]
