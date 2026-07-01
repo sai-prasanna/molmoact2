@@ -59,7 +59,17 @@ def build_model(model_path: str, device: torch.device):
         getattr(loss_config, "progress_discrete_bins", None)
         or getattr(exp_config.model, "progress_discrete_bins", 10)
     )
-    model_dtype = next(reward_model.parameters()).dtype
+    # Diagnostics: Unsloth can leave the model in MIXED precision (e.g. fp32 visual patch-embed
+    # while norms are bf16), which trips "expected BFloat16 but found Float" in the visual tower.
+    from collections import Counter
+    dtype_hist = Counter(str(p.dtype) for p in reward_model.parameters())
+    print(f"[setup] param dtype histogram (pre-cast): {dict(dtype_hist)}", flush=True)
+
+    # Force a uniform floating dtype so no sub-module dtype mismatches remain at inference.
+    model_dtype = max(dtype_hist, key=dtype_hist.get)  # majority dtype string, e.g. 'torch.bfloat16'
+    model_dtype = getattr(torch, model_dtype.split(".")[-1])
+    reward_model = reward_model.to(model_dtype)
+    print(f"[setup] cast whole model to {model_dtype}", flush=True)
     return reward_model, tokenizer, collator, is_discrete, num_bins, model_dtype
 
 
@@ -84,6 +94,12 @@ def infer_video(frames, task, *, reward_model, tokenizer, collator, is_discrete,
             if torch.is_floating_point(v):
                 v = v.to(model_dtype)
             progress_inputs[k] = v
+
+    if not getattr(infer_video, "_dbg", False):
+        infer_video._dbg = True
+        dbg = {k: (str(v.dtype) if hasattr(v, "dtype") else type(v).__name__)
+               for k, v in progress_inputs.items()}
+        print(f"[dbg] progress_inputs dtypes: {dbg}", flush=True)
 
     results = compute_batch_outputs(
         reward_model, tokenizer, progress_inputs,
