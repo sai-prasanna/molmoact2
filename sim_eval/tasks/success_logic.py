@@ -77,6 +77,7 @@ def bar_tilt_ok(quat_wxyz: torch.Tensor, max_deg: float) -> torch.Tensor:
     """True where the bar's long (local +y) axis is within max_deg of horizontal.
 
     quat_wxyz: (b,4). Returns (b,) bool. Tilt = asin(|world_axis_z|).
+    Measures the long axis' deviation from the horizontal plane only; in-plane yaw is unconstrained.
     """
     axis = rotate_vec_by_quat(quat_wxyz, torch.tensor([0.0, 1.0, 0.0]))
     z = axis[:, 2].abs().clamp(0.0, 1.0)

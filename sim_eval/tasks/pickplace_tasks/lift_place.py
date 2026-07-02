@@ -10,7 +10,6 @@ at 0% binary success. See docs/superpowers/specs/2026-07-02-bimanual-lift-place-
 
 from typing import Any, Dict
 
-import numpy as np
 import sapien
 import sapien.physx as physx
 import torch
@@ -55,7 +54,7 @@ class BimanualLiftPlaceStandEnv(BimanualPickPlaceEnv):
     STAND_HALF = (0.05, 0.17)
     LIFT_Z = 0.09
     LIFT_TILT_DEG = 30.0
-    PLACE_XY_HALF = (0.06, 0.05)
+    PLACE_XY_HALF = (0.05, 0.05)
     PLACE_Z = (0.11, 0.17)
     PLACE_TILT_DEG = 25.0
     PLACE_SPEED = 0.05

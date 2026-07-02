@@ -148,3 +148,21 @@ def test_lift_stage_two_when_placed_overrides():
         both_grasped=torch.tensor([True]), placed=torch.tensor([True]),
         z_lift=0.09, max_tilt_deg_lift=30.0)
     assert int(s[0]) == 2
+
+
+def test_lift_stage_zero_when_below_lift_height_though_level_and_grasped():
+    # isolates the z_lift gate: level + both-grasped but too low -> still stage 0
+    s = lift_stage(
+        bar_p=torch.tensor([[-0.30, 0.0, 0.05]]), quat_wxyz=_IDENT,
+        both_grasped=torch.tensor([True]), placed=torch.tensor([False]),
+        z_lift=0.09, max_tilt_deg_lift=30.0)
+    assert int(s[0]) == 0
+
+
+def test_lift_stage_two_when_placed_even_without_grasp():
+    # placement is grasp-independent: placed=True with both_grasped=False -> stage 2
+    s = lift_stage(
+        bar_p=torch.tensor([[-0.15, 0.0, 0.14]]), quat_wxyz=_IDENT,
+        both_grasped=torch.tensor([False]), placed=torch.tensor([True]),
+        z_lift=0.09, max_tilt_deg_lift=30.0)
+    assert int(s[0]) == 2
