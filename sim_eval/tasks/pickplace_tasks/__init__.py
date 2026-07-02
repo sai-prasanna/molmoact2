@@ -10,6 +10,7 @@ from .container_tasks import (
 )
 from .block_stack import BimanualBlockStackEnv
 from .utensil_tray import BimanualUtensilTrayEnv
+from .lift_place import BimanualLiftPlaceStandEnv
 
 __all__ = [
     "BimanualBoxEnv",
@@ -20,4 +21,5 @@ __all__ = [
     "BimanualGroceryEnv",
     "BimanualBlockStackEnv",
     "BimanualUtensilTrayEnv",
+    "BimanualLiftPlaceStandEnv",
 ]
