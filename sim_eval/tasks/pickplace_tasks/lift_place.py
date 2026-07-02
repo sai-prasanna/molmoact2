@@ -85,6 +85,13 @@ class BimanualLiftPlaceStandEnv(BimanualPickPlaceEnv):
         )
         return self.stand
 
+    def _after_reconfigure(self, options: dict):
+        # primitive bar: half-height is known, skip the mesh bbox query
+        # (matches block_stack.py; base path relies on get_first_collision_mesh).
+        self.object_zs = torch.full(
+            (len(self.objects),), self.BAR_HALF[2], device=self.device
+        )
+
     # --- episode init: single bar, small yaw jitter only --------------------
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
         with torch.device(self.device):
