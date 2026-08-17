@@ -52,7 +52,9 @@ Thumbs.db
 .ipynb_checkpoints/
 
 # sim_eval assets (robot meshes, URDFs) — download via sim_eval/scripts/download_assets.py
-sim_eval/assets/
+# DK1 meshes are small (~9.6 MB) and committed directly, so keep them tracked.
+sim_eval/assets/*
+!sim_eval/assets/dk1/
 sim_eval/outputs/
 
 # Scratch / duplicates

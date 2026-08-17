@@ -28,7 +28,7 @@ from tqdm import tqdm
 
 import mani_skill.envs  # noqa: F401
 from .tasks import *  # noqa: F401, F403
-from .inference.client import DroidClient, YAMClient, MolmoActClientBase
+from .inference.client import DroidClient, YAMClient, DK1Client, MolmoActClientBase
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -39,10 +39,11 @@ DEFAULT_OUTPUT_DIR = str(EVAL_DIR / "outputs")
 DEFAULT_LANGUAGE_INSTRUCTIONS: dict[str, str] = {
     "DroidPutEverythingInBox-v1":       "put everything into the box",
     "BimanualYAMPutEverythingInBox-v1": "put everything into the box",
+    "DK1PutEverythingInBox-v1":         "put everything into the box",
 }
 
 
-PolicyType = Literal["remote-droid", "remote-yam"]
+PolicyType = Literal["remote-droid", "remote-yam", "remote-dk1"]
 
 
 @dataclass
@@ -50,7 +51,7 @@ class EvalConfig:
     """MolmoAct2 closed-loop policy evaluation on ManiSkill."""
 
     policy_type: Annotated[PolicyType, tyro.conf.arg(aliases=["-p"])] = "remote-yam"
-    """'remote-droid' or 'remote-yam'."""
+    """'remote-droid', 'remote-yam', or 'remote-dk1'."""
 
     remote_url: Optional[str] = None
     """Full /act endpoint URL, e.g. http://<host>:8202/act."""
@@ -267,7 +268,7 @@ def main() -> None:
             "  -e BimanualYAMPutEverythingInBox-v1"
         )
 
-    _clients = {"remote-droid": DroidClient, "remote-yam": YAMClient}
+    _clients = {"remote-droid": DroidClient, "remote-yam": YAMClient, "remote-dk1": DK1Client}
     if config.policy_type not in _clients:
         raise SystemExit(f"Unknown --policy-type '{config.policy_type}'. "
                          f"Known: {sorted(_clients.keys())}")

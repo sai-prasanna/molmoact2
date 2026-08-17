@@ -2,3 +2,4 @@
 
 from .yam_tasks import *  # noqa: F401, F403
 from .droid_tasks import *  # noqa: F401, F403
+from .dk1_tasks import *  # noqa: F401, F403
