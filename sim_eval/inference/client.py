@@ -21,6 +21,8 @@ from .common import (
     droid_state_adapter,
     yam_state_adapter,
     yam_action_adapter,
+    dk1_state_adapter,
+    dk1_action_adapter,
     extract_camera,
     extract_qpos,
 )
@@ -149,3 +151,11 @@ class YAMClient(_MolmoActHTTPClient):
     schema         = MOLMOACT2_SCHEMAS["yam"]
     state_adapter  = staticmethod(yam_state_adapter)
     action_adapter = staticmethod(yam_action_adapter)
+
+
+class DK1Client(_MolmoActHTTPClient):
+    """Bimanual DK1 client — driven by the MolmoAct2-YAM server (shared
+    kinematics, identity arm map). Same 3-cam / 14-D contract as YAM."""
+    schema         = MOLMOACT2_SCHEMAS["dk1"]
+    state_adapter  = staticmethod(dk1_state_adapter)
+    action_adapter = staticmethod(dk1_action_adapter)
